@@ -1,6 +1,6 @@
 # PL2025-A104444
 
-**Autor:** João Gustavo Serrão 
+**Autor:** João Gustavo Serrão <br>
 **Número:** A104444 
 ![Foto](me.jpg)
 
