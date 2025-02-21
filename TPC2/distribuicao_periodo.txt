@@ -1,0 +1,7 @@
+Barroco: 26 obras
+Clássico: 15 obras
+Medieval: 45 obras
+Renascimento: 40 obras
+Século XX: 18 obras
+Romântico: 19 obras
+Contemporâneo: 6 obras
