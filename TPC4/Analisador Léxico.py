@@ -1,12 +1,13 @@
 import ply.lex as lex
 
+literals = ['{', '}', '.',':']
+
 # List of token names
 tokens = (
     'SELECT', 'WHERE', 'LIMIT',  # Keywords
     'VAR', 'IRI', 'STRING',  # Identifiers and literals
     'PREFIXED_NAME',  # Handles dbo:MusicalArtist, foaf:name
-    'LBRACE', 'RBRACE', 'DOT',  # Symbols
-    'COLON', 'NUMBER'
+    'NUMBER'
 )
 
 
@@ -44,10 +45,6 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
-t_LBRACE = r'\{'
-t_RBRACE = r'\}'
-t_DOT = r'\.'
-t_COLON = r':'
 
 # Ignore comments and spaces
 t_ignore_COMMENT = r'\#.*'
