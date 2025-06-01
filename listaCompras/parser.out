@@ -1,0 +1,205 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> lista
+Rule 1     lista -> catgs
+Rule 2     catgs -> catgs catg
+Rule 3     catgs -> catg
+Rule 4     catgs -> <empty>
+Rule 5     catg -> CATG POINT products
+Rule 6     products -> products product
+Rule 7     products -> product
+Rule 8     product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG
+
+Terminals, with rules where they appear
+
+CATG                 : 5
+DPOINT               : 8 8 8
+LINE                 : 8
+NUM                  : 8 8
+POINT                : 5
+PRICE                : 8
+PRODUCT              : 8
+VIRG                 : 8
+error                : 
+
+Nonterminals, with rules where they appear
+
+catg                 : 2 3
+catgs                : 1 2
+lista                : 0
+product              : 6 7
+products             : 5 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . lista
+    (1) lista -> . catgs
+    (2) catgs -> . catgs catg
+    (3) catgs -> . catg
+    (4) catgs -> .
+    (5) catg -> . CATG POINT products
+
+  ! shift/reduce conflict for CATG resolved as shift
+    $end            reduce using rule 4 (catgs -> .)
+    CATG            shift and go to state 4
+
+  ! CATG            [ reduce using rule 4 (catgs -> .) ]
+
+    lista                          shift and go to state 1
+    catgs                          shift and go to state 2
+    catg                           shift and go to state 3
+
+state 1
+
+    (0) S' -> lista .
+
+
+
+state 2
+
+    (1) lista -> catgs .
+    (2) catgs -> catgs . catg
+    (5) catg -> . CATG POINT products
+
+    $end            reduce using rule 1 (lista -> catgs .)
+    CATG            shift and go to state 4
+
+    catg                           shift and go to state 5
+
+state 3
+
+    (3) catgs -> catg .
+
+    CATG            reduce using rule 3 (catgs -> catg .)
+    $end            reduce using rule 3 (catgs -> catg .)
+
+
+state 4
+
+    (5) catg -> CATG . POINT products
+
+    POINT           shift and go to state 6
+
+
+state 5
+
+    (2) catgs -> catgs catg .
+
+    CATG            reduce using rule 2 (catgs -> catgs catg .)
+    $end            reduce using rule 2 (catgs -> catgs catg .)
+
+
+state 6
+
+    (5) catg -> CATG POINT . products
+    (6) products -> . products product
+    (7) products -> . product
+    (8) product -> . LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG
+
+    LINE            shift and go to state 9
+
+    products                       shift and go to state 7
+    product                        shift and go to state 8
+
+state 7
+
+    (5) catg -> CATG POINT products .
+    (6) products -> products . product
+    (8) product -> . LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG
+
+    CATG            reduce using rule 5 (catg -> CATG POINT products .)
+    $end            reduce using rule 5 (catg -> CATG POINT products .)
+    LINE            shift and go to state 9
+
+    product                        shift and go to state 10
+
+state 8
+
+    (7) products -> product .
+
+    LINE            reduce using rule 7 (products -> product .)
+    CATG            reduce using rule 7 (products -> product .)
+    $end            reduce using rule 7 (products -> product .)
+
+
+state 9
+
+    (8) product -> LINE . NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG
+
+    NUM             shift and go to state 11
+
+
+state 10
+
+    (6) products -> products product .
+
+    LINE            reduce using rule 6 (products -> products product .)
+    CATG            reduce using rule 6 (products -> products product .)
+    $end            reduce using rule 6 (products -> products product .)
+
+
+state 11
+
+    (8) product -> LINE NUM . DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG
+
+    DPOINT          shift and go to state 12
+
+
+state 12
+
+    (8) product -> LINE NUM DPOINT . PRODUCT DPOINT PRICE DPOINT NUM VIRG
+
+    PRODUCT         shift and go to state 13
+
+
+state 13
+
+    (8) product -> LINE NUM DPOINT PRODUCT . DPOINT PRICE DPOINT NUM VIRG
+
+    DPOINT          shift and go to state 14
+
+
+state 14
+
+    (8) product -> LINE NUM DPOINT PRODUCT DPOINT . PRICE DPOINT NUM VIRG
+
+    PRICE           shift and go to state 15
+
+
+state 15
+
+    (8) product -> LINE NUM DPOINT PRODUCT DPOINT PRICE . DPOINT NUM VIRG
+
+    DPOINT          shift and go to state 16
+
+
+state 16
+
+    (8) product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT . NUM VIRG
+
+    NUM             shift and go to state 17
+
+
+state 17
+
+    (8) product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM . VIRG
+
+    VIRG            shift and go to state 18
+
+
+state 18
+
+    (8) product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG .
+
+    LINE            reduce using rule 8 (product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG .)
+    CATG            reduce using rule 8 (product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG .)
+    $end            reduce using rule 8 (product -> LINE NUM DPOINT PRODUCT DPOINT PRICE DPOINT NUM VIRG .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for CATG in state 0 resolved as shift
